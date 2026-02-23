@@ -1,4 +1,5 @@
 import { Pricing } from "../../data/pricingData";
+import { roundTo } from "../../utils/math";
 import { computeCost } from "./computeCost";
 import { databaseCost } from "./databaseCost";
 import { storageCost } from "./storageCost";
@@ -21,12 +22,17 @@ export const calculateCost = (input: SimulationInput, pricing: Pricing) => {
     const database = databaseCost(input, pricing.database);
 
     // Total Cost
-    const total =
+    const total = 
     compute + 
     storage + 
     transfer +
     database;
 
-    // 4 decimal places
-    return Number(total.toFixed(4));
+    return {
+        compute: roundTo(compute, 4),
+        storage: roundTo(storage, 4),
+        transfer: roundTo(storage, 4),
+        database: roundTo(database, 4),
+        total: roundTo(total, 4),
+    };
 };
