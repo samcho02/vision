@@ -10,7 +10,7 @@ export const simulationSchema = {
             "dbWrites"
         ],
         properties: {
-            computeRequest: {type: "integer", minimum: 0},
+            computeRequests: {type: "integer", minimum: 0},
             avgExecutionMs: {type: "number", minimum: 0},
             storageGB: {type: "number", minimum: 0},
             outboundGB: {type: "number", minimum: 0},
