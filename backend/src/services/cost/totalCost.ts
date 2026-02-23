@@ -31,7 +31,7 @@ export const calculateCost = (input: SimulationInput, pricing: Pricing) => {
     return {
         compute: roundTo(compute, 4),
         storage: roundTo(storage, 4),
-        transfer: roundTo(storage, 4),
+        transfer: roundTo(transfer, 4),
         database: roundTo(database, 4),
         total: roundTo(total, 4),
     };
