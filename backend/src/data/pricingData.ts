@@ -17,3 +17,9 @@ export const pricing = {
     writePerMillion: 1.00
   }
 } as const;
+
+export type Pricing = typeof pricing;
+export type ComputePricing = Pricing["compute"];
+export type StoragePricing = Pricing["storage"];
+export type TransferPricing = Pricing["transfer"];
+export type DatabasePricing = Pricing["database"];
