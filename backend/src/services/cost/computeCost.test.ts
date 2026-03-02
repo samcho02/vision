@@ -4,18 +4,22 @@ import { ComputePricing } from "../../data/pricingData";
 import { SimulationInput } from "./totalCost";
 
 describe("computeCost Test", () => {
-    const baseInput = {
+    const baseInput : SimulationInput= {
         computeRequests: 0,
-        avgExecutionMs: 0
+        avgExecutionMs: 0,
+        storageGB: 0,
+        outboundGB: 0,
+        dbReads: 0,
+        dbWrites: 0,
     };
 
-    const basePricing = {
+    const basePricing : ComputePricing = {
         requestPerMillion: 1,
         durationPerMs: 1
     };
 
     it ("Test 1: Returns 0 when no usage", () => {
-        const result = computeCost(baseInput as SimulationInput, basePricing as ComputePricing);
+        const result = computeCost(baseInput, basePricing);
         expect(result).toBe(0);
     });
 
@@ -31,7 +35,7 @@ describe("computeCost Test", () => {
             durationPerMs: 0
         };
 
-        const result = computeCost(input as SimulationInput, pricing as ComputePricing);
+        const result = computeCost(input, pricing);
         expect(result).toBe(3);
     });
 });
