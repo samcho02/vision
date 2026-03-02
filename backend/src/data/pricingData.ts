@@ -1,4 +1,31 @@
-export const pricing = {
+// Shape of data
+export interface ComputePricing {
+  requestPerMillion: number;
+  durationPerMs: number;
+}
+
+export interface StoragePricing {
+  perGBMonth: number;
+}
+
+export interface TransferPricing {
+  outboundPerGB: number;
+}
+
+export interface DatabasePricing {
+  readPerMillion: number;
+  writePerMillion: number;
+}
+
+export interface Pricing {
+  compute: ComputePricing;
+  storage: StoragePricing;
+  transfer: TransferPricing;
+  database: DatabasePricing;
+}
+
+// Dummy data
+export const defaultPricing: Pricing = {
   compute: {
     requestPerMillion: 0.25,
     durationPerMs: 0.000002
@@ -16,10 +43,4 @@ export const pricing = {
     readPerMillion: 0.20,
     writePerMillion: 1.00
   }
-} as const;
-
-export type Pricing = typeof pricing;
-export type ComputePricing = Pricing["compute"];
-export type StoragePricing = Pricing["storage"];
-export type TransferPricing = Pricing["transfer"];
-export type DatabasePricing = Pricing["database"];
+};
